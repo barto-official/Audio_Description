@@ -1,0 +1,8 @@
+torch
+torchaudio
+transformers
+ffmpeg
+librosa
+soundfile
+srt
+git+https://github.com/m-bain/whisperx.git
