@@ -28,7 +28,8 @@ from transformers.modeling_outputs import Seq2SeqLMOutput
 from transformers.generation.logits_process import WhisperTimeStampLogitsProcessor
 from transformers.models.whisper.tokenization_whisper import TASK_IDS, TO_LANGUAGE_CODE
 
-
+# Custom class derived from Whisper's conditional generation model
+# This class is used for audio captioning with additional configurations
 class WhisperForAudioCaptioning(transformers.WhisperForConditionalGeneration):
 
     def forward(
