@@ -28,8 +28,16 @@ A few things to consider:
 --------
 **Models Information**
 
-1. Transcription Model
-2. Sounds Captioning Model
+1. Transcription Model - we use WhisperX due to robust segmentation, fast processing, and VAD capabilities. For alignment, we use WAV2VEC2_ASR_LARGE_LV60K_960H — _"The large model pretrained and fine-tuned on 960 hours of Libri-Light and Librispeech on 16kHz sampled speech audio. When using the model make sure that your speech input is also sampled at 16Khz". For more details, check: https://huggingface.co/facebook/wav2vec2-large-960h-lv60
+   * The WhisperX transcription using medium model due to compute capabilities constraints has WER of 2.14%. We measured the error on the Transformers movie from 1986.
+     
+2. Sounds Captioning Model — we use Whipser pretrained on AudioCaps and AudioSet datasets (see description below). However, pre-training was only on the subset due to compute and memory overhead. This may have significantly impacted the performance. Once pretrained, the model is fine-tuned on Clotho dataset. See github repository for more information: https://github.com/prompteus/audio-captioning
+
+
+-----
+
+**Datasets**
+
 
 
 ----
