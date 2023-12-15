@@ -14,9 +14,11 @@ This project presents an automated solution for generating subtitles for video c
 
 ----
 **This Repository**
+
 The main file is subtitle_generator.py which contains the full script to generate SDH subtitles (subtitles for hearing impaired). The pipeline takes video and outputs the video with subtitles
-already embedded. Obviously, as intermediate files, subtitles are available as standalone files to grab and go. You also need to specify the size of models — tiny, small, medium, large — based on your compute 
-capabilities. (see the model description below).
+already embedded. Obviously, as intermediate files, subtitles are available as standalone files to grab and go. You also need to specify the size of models — tiny, small, medium, large — based on your compute capabilities. (see the model description below).
+
+<ins>Subtitle generator with name 'testing' is the copy of the original one but without running the last function: appending subtitles to mp4 which is very time-consuming and for benchmarking it does not contribute much because this merging of subtitles with the video is model-agnostic</ins>
 
 A few things to consider:
 1. Google Colab provides a tested environment when it comes to libraries. Local development is not guaranteed to work as expected (especially MAC with M chips)
