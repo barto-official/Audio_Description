@@ -135,7 +135,9 @@ The final step involves using FFmpeg again to embed the generated SRT subtitles 
 
 ---------
 
-**Testing Metrics**
+**Testing Metrics** 
+
+_Test Conducted using Small Models_
 
 For testing the accuracy of our audio captioning model we used the evaluation category of the clotho dataset in order to compare how our generated captions fare against the actual captions from the clotho dataset. In order to do this we made sure to normalize the generated subtitles in order to remove all the special characters and make the letters all lowercase in order to have a fair comparison. The metrics that we used are the following:
 
@@ -158,9 +160,11 @@ For testing the accuracy of our audio captioning model we used the evaluation ca
 -----------
 
 **Limitations during Development**
-1. Compute Power
-2. Metrics controversy 
-3. Subjectivity of Audio-captoning
+1. Compute Power — we use basic Windows/Mac computers and Google Colab. Due to that fact, we mainly operated on small/medium models whose results can be enhanced by 20-30% if using more computing power for large models. Also, audio-captioning model was pre-trained only on 1/20 of the dataset possible (100k out of 2M)  which is the next aspect that can be improved but only if processing resources are available. Given the size of the model, it's extremely difficult to do it on proprietary user device.
+
+2. Metrics controversy — metrics, especially for Audio-Captoning, are to provide more background information and some benchmarks but they don't specifically address the "accuracy" of the model. Also, because we couldn't use medium/large models, we see a big space for improvement. Second improvement can come from pre-training the model on more data (see the first point)
+
+3. Subjectivity of Audio-captoning — difficulty in judging the model, especially for audio-captoning, comes from the fact that current subtitles for hearing impaired have relatively low-frequency of audio captions (mostly the main sounds in the movie). We implemented them on most of the possible subsegments of the audio/video. Thus it's difficult to compare the model to 'ground-truth'. Also, the labelling of sounds is very subjective and not one answer is possible that would accurately describe the scene. Furthermore, testing using 'captions' rather than keywords is bring additional obstacles. Compare: "The man is walking on the green grass" and "The man is walking on the grass". Technically, these sentences are not the same but in practice they are the same. This is the same probelm as with TTS (Text-to-Speech). As per Hugging Face: _"Different speakers may choose to emphasize different parts of the sentence, for example. This makes TTS models hard to evaluate. Because of this, the L1 or MSE loss value isn't actually very meaningful — there are multiple ways to represent the same text to a spectrogram. This is why TTS models are typically evaluated by human listeners, using a metric known as MOS or mean opinion score._"
 
 ----------
 
