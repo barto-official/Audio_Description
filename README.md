@@ -122,6 +122,24 @@ The final step involves using FFmpeg again to embed the generated SRT subtitles 
 
 ---------
 
+**Testing Metrics**
+
+For testing the accuracy of our audio captioning model we used the evaluation category of the clotho dataset in order to compare how our generated captions fare against the actual captions from the clotho dataset. In order to do this we made sure to normalize the generated subtitles in order to remove all the special characters and make the letters all lowercase in order to have a fair comparison. The metrics that we used are the following:
+
+* **BLEU1, BLEU2, BLEU3, BLEU4:** These are different variations of the BLEU (Bilingual Evaluation Understudy) score, which measures how similar a machine-translated text is to a set of high-quality reference translations. The numbers 1, 2, 3, and 4 refer to the n-gram size used in the calculation. BLEU1 considers only individual words (unigrams), BLEU2 includes pairs of consecutive words (bigrams), and so on. Higher n-gram BLEU scores (like BLEU4) are more stringent, as they consider longer phrases and thus a closer match to the reference text.
+
+    * **Results:** BLEU1 = 0.458441, BLEU2 = 0.274022, BLEU3 = 0.171906, BLEU4 = 0.110351
+
+* **ROUGEL:** This stands for Recall-Oriented Understudy for Gisting Evaluation using Longest Common Subsequence. ROUGE scores are used primarily for evaluating text summarization. ROUGEL specifically measures the longest common subsequence between the generated text and the reference text, considering the order of words. It's good for assessing the overall structure and content preservation in the generated text.
+
+    * **Results:** ROUGEL = 0.216043
+
+* **METEOR:** This stands for Metric for Evaluation of Translation with Explicit Ordering. It's another metric for evaluating translation quality, similar to BLEU but with some differences. METEOR considers synonyms and stemming, and it balances precision (how many words in the generated text are in the reference) with recall (how many words in the reference are captured in the generated text). It generally aligns more closely with human judgment than BLEU.
+
+    * **Results:** METEOR = 0.341802
+
+---------
+
 Further Work (What to Improve):
 1. Use more compute power, if possible, to use large models which was impossible during development and using the author's hardware.
 2. Pre-train Whisperx on full datasets, not samples (AudioCaps and AudioSets). Please, refer to https://github.com/prompteus/audio-captioning for more information. Pre-training has been done on ~100k examples out of 2M possible. Memory and time are the main obstacles to make that happen. We estimate to boost performance of sounds captioning to improve by ~20%.
