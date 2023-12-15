@@ -20,6 +20,10 @@ already embedded. Obviously, as intermediate files, subtitles are available as s
 
 <ins>Subtitle generator with name 'testing' is the copy of the original one but without running the last function: appending subtitles to mp4 which is very time-consuming and for benchmarking it does not contribute much because this merging of subtitles with the video is model-agnostic</ins>
 
+In **Notebooks** you can find examples of usage of the code, benchmarking (time) of different models, and checking WER of pure transcription.
+
+In **Examples** you can find outputs of the work of the script — you will find a full movie with subtitles, pure subtitles, and pure transcription. 
+
 A few things to consider:
 1. Google Colab provides a tested environment when it comes to libraries. Local development is not guaranteed to work as expected (especially MAC with M chips)
 
@@ -58,8 +62,17 @@ A few things to consider:
 3. AudioCaps
    * Focus on DCASE 2021 Challenge:
    * It serves as a superset for AudioCaps
+   * A large audio captioning dataset, derived from AudioSet, comprising over 50,000 ten second audio clips.
+   * Split into training, testing, and validation segments, with each clip in the training set having one caption and those in the testing and validation sets having five captions each.
+
+Based on _https://github.com/Labbeti/aac-datasets_ :
+
+<img center width="429" alt="Screenshot 2023-12-15 at 09 58 51" src="https://github.com/barto-official/Audio_Description/assets/125658269/3eb06ca0-478f-49c1-a4b8-1efe7164c25a">
+
+<img center width="429" alt="Screenshot 2023-12-15 at 08 46 37" src="https://github.com/barto-official/Audio_Description/assets/125658269/137a298c-e2fb-4fd3-a01a-2387562af20f"> <br>
 
 ----
+<img center width="430" alt="Screenshot 2023-12-15 at 10 05 17" src="https://github.com/barto-official/Audio_Description/assets/125658269/b68745d6-9237-4607-813a-0d9bf060b081">
 
 **How the pipeline works:**
 
@@ -137,12 +150,25 @@ For testing the accuracy of our audio captioning model we used the evaluation ca
 * **METEOR:** This stands for Metric for Evaluation of Translation with Explicit Ordering. It's another metric for evaluating translation quality, similar to BLEU but with some differences. METEOR considers synonyms and stemming, and it balances precision (how many words in the generated text are in the reference) with recall (how many words in the reference are captured in the generated text). It generally aligns more closely with human judgment than BLEU.
 
     * **Results:** METEOR = 0.341802
+ 
+* **WER**: Measuring WER <ins>on pure transcription (without audio captioning)</ins> by comparing our transcription with original subtitles (.srt vs .srt) of Transformers movie from 1986.
+  * **Results**: WER=2.14% 
 
----------
+
+-----------
+
+**Limitations during Development**
+1. Compute Power
+2. Metrics controversy 
+3. Subjectivity of Audio-captoning
+
+----------
 
 Further Work (What to Improve):
 1. Use more compute power, if possible, to use large models which was impossible during development and using the author's hardware.
 2. Pre-train Whisperx on full datasets, not samples (AudioCaps and AudioSets). Please, refer to https://github.com/prompteus/audio-captioning for more information. Pre-training has been done on ~100k examples out of 2M possible. Memory and time are the main obstacles to make that happen. We estimate to boost performance of sounds captioning to improve by ~20%.
 3. Enhance Speaker Diarization — first, run a classifier on the whole movie to classify speakers and then include Diarization so instead of "Speaker 1" you would have, for example, "John"
 4. If you would like, there is a possibility of including ASS subtitles.
+
+
    
