@@ -30,7 +30,7 @@ A few things to consider:
 
 1. Transcription Model
 2. Sounds Captioning Model
-3. 
+
 
 ----
 
@@ -96,4 +96,8 @@ The final step involves using FFmpeg again to embed the generated SRT subtitles 
 ---------
 
 Further Work (What to Improve):
-1. 
+1. Use more compute power, if possible, to use large models which was impossible during development and using the author's hardware.
+2. Pre-train Whisperx on full datasets, not samples (AudioCaps and AudioSets). Please, refer to https://github.com/prompteus/audio-captioning for more information. Pre-training has been done on ~100k examples out of 2M possible. Memory and time are the main obstacles to make that happen. We estimate to boost performance of sounds captioning to improve by ~20%.
+3. Enhance Speaker Diarization — first, run a classifier on the whole movie to classify speakers and then include Diarization so instead of "Speaker 1" you would have, for example, "John"
+4. If you would like, there is a possibility of including ASS subtitles.
+   
