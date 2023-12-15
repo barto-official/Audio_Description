@@ -38,7 +38,24 @@ A few things to consider:
 
 **Datasets**
 
+1. AudioSet
+  * Source: YouTube videos.
+  * Content: Over 2 million 10-second audio clips.
+  * Annotation: Hierarchical ontology of 632 audio event classes.
+  * Nature: Multi-label dataset, with an average of 2.7 classes per recording.
+  * Usage: Audio classification, tagging, and source separation.
 
+
+2. Clotho
+  * Audio Clip Length: 10 to 30 seconds.
+  * Quality: Good quality recordings (44.1kHz, 16-bit), normalized with trimmed silences.
+  * Content Variety: Includes ambient sounds, animal noises, crowd murmurs, machinery, etc.
+  * Captions: Each clip has five captions, created through description, editing, and scoring.
+  * Crowdsourcing: Captions gathered and refined via Amazon Mechanical Turk.
+
+3. AudioCaps
+   * Focus on DCASE 2021 Challenge:
+   * It serves as a superset for AudioCaps
 
 ----
 
